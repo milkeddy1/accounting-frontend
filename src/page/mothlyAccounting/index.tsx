@@ -7,7 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu"
-
+import { Link } from "react-router-dom"
 const cards = Array.from(Array(12)).map((item) => {
   return item
 })
@@ -29,7 +29,7 @@ function MonthlyAccounting() {
           <CardTitle>
             <DropdownMenu>
               <DropdownMenuTrigger>
-                <p className="text-typography text-[30px] p-2">
+                <p className="text-typography text-[30px] p-2 border-[1px] rounded-[5px]">
                   {selectedYear}
                 </p>
               </DropdownMenuTrigger>
@@ -49,7 +49,9 @@ function MonthlyAccounting() {
         <CardContent>
           <div className="grid grid-cols-2 gap-2">
             {cards.map((_, idx) => {
-              return <SingleCard key={idx} />
+              return <Link key={idx} to={`/accounting/${idx+1}`}>
+              <SingleCard  />
+              </Link>
             })}
           </div>
         </CardContent>
